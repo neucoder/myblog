@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../../static/Semantic/semantic.css">
     <link rel="stylesheet" href="../../static/css/me.css">
-    <title>博客管理</title>
+    <title>分类管理</title>
 </head>
 <body>
 
@@ -15,8 +15,8 @@
     <div class="ui container">
         <div class="ui inverted secondary menu stackable">
             <h2 class="ui teal header item">管理后台</h2>
-            <a href="#" class="active m-item item m-mobile-hide"><i class="home icon"></i>博客</a>
-            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+            <a href="#" class=" m-item item m-mobile-hide"><i class="home icon"></i>博客</a>
+            <a href="#" class="active m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
             <div class="right m-item m-mobile-hide menu">
                 <div class="ui dropdown item">
@@ -37,10 +37,10 @@
         <i class="sidebar icon"></i>
     </a>
 </nav>
+<br>
+<br>
+<br>
 
-<br>
-<br>
-<br>
 <div class="ui attached pointing menu m-opacity-mini">
     <div class="ui container">
         <div class="right menu">
@@ -54,12 +54,37 @@
 <!--中间内容-->
 <div class="m-padded-tb-big m-container-small m-opacity-mini">
     <div class="ui container">
-       <div class="ui success large message">
-           <h3>Hi,</h3>
-           <p>neucoder 欢迎登录</p>
-       </div>
-        <img src="https://picsum.photos/1000/400?image=1005" alt="" class="ui  rounded bordered fluid image">
 
+        <table class="ui celled  table">
+            <thead >
+                <tr >
+                    <th></th>
+                    <th >名称</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>刻意练习清单</td>
+                <td>
+                    <a href="#" class="ui mini teal basic button">编辑</a>
+                    <a href="#" class="ui mini red basic button">删除</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="6">
+                    <div class="ui pagination mini menu">
+                        <a href="" class="item">上一页</a>
+                        <a href="" class="item">下一页</a>
+                    </div>
+                    <a href="#" class="ui mini right floated teal basic button">新增</a>
+                </th>
+            </tr>
+            </tfoot>
+        </table>
     </div>
 </div>
 
