@@ -6,3 +6,5 @@ spring datasource mysql 的密码设置为0000时不好使
 
 2. postmaping
 getmaping 看错了视频
+
+3. 标签管理页面 前端校验不成功

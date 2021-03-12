@@ -5,8 +5,11 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../../static/Semantic/semantic.css">
+
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
+
     <link rel="stylesheet" href="../../static/css/me.css">
-    <title>博客管理</title>
+    <title>分类新增</title>
 </head>
 <body>
 
@@ -16,7 +19,7 @@
         <div class="ui inverted secondary menu stackable">
             <h2 class="ui teal header item">管理后台</h2>
             <a href="/admin/blogs" class=" m-item item m-mobile-hide"><i class="home icon"></i>博客</a>
-            <a href="/admin/types" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+            <a href="/admin/types" class="active m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
             <a href="/ad" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
             <div class="right m-item m-mobile-hide menu">
                 <div class="ui dropdown item">
@@ -44,26 +47,42 @@
 <div class="ui attached pointing menu m-opacity-mini">
     <div class="ui container">
         <div class="right menu">
-            <a href="#" class="item">发布</a>
-            <a href="#" class="teal active item">列表</a>
+            <a href="#" class="teal active item">发布</a>
+            <a href="#" class="item">列表</a>
         </div>
     </div>
 </div>
 
 
 <!--中间内容-->
-<div class="m-padded-tb-big m-container-small m-opacity-mini">
+<div class="m-padded-tb-big m-container-small ui segment">
     <div class="ui container">
-       <div class="ui success large message">
-           <h3>Hi,</h3>
-           <p>neucoder 欢迎登录</p>
-       </div>
-        <img src="https://picsum.photos/1000/400?image=1005" alt="" class="ui  rounded bordered fluid image">
+        <form action="#" method="post" th:action="@{/admin/types}" class="ui form">
+            <div class="required field">
+                <div class="ui left labeled input">
+                    <label class="ui teal basic label">名称</label>
+                    <input type="text" name="name" placeholder="分类名称">
+                </div>
+            </div>
 
+            <div class="ui error message"></div>
+            <div class="ui right aligned container">
+                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                <button class="ui teal submit button">提交</button>
+            </div>
+
+        </form>
     </div>
 </div>
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <!--底部footer-->
 <footer class="ui inverted vertical segment m-padded-tb-massive m-opacity-mini">
     <div class="ui center aligned container">
@@ -105,14 +124,31 @@
 
 <script src="../../static/js/jquery-3.1.1.min.js"></script>
 <script src="../../static/Semantic/semantic.min.js"></script>
+<script src="../../static/lib/editormd/editormd.js"></script>
+
 <script>
+
+
+
     $('.menu.toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');
     });
 
     $('.ui.dropdown').dropdown({
         on:'click'
-    })
+    });
+
+    $('.ui.form').form({
+        fields:{
+            title:{
+                indentifier:'name',
+                rules:[{
+                    type:'empty',
+                    prompt:'请输入分类名称'
+                }]
+            }
+        }
+    });
 
 </script>
 </body>
