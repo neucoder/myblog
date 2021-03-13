@@ -12,6 +12,8 @@ public class Blog {
     @Id
     @GeneratedValue
     private Long id;
+    @Basic(fetch = FetchType.LAZY)
+    @Lob
     private String content;
     private String title;
     private String firstPicture;
@@ -25,8 +27,27 @@ public class Blog {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
 
+    @ManyToOne
+    private User user;
+
+    @OneToMany(mappedBy = "blog")
+    private List<Comment> comments = new ArrayList<>();
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateTime;
+
+
+    @ManyToMany(cascade = {CascadeType.PERSIST})
+    private List<Tag> tags = new ArrayList<>();
+
+    @ManyToOne
+    private Type type;
+
+    @Transient
+    private String tagIds;
+
+
+
 
     public Date getCreateTime() {
         return createTime;
@@ -44,12 +65,6 @@ public class Blog {
         this.updateTime = updateTime;
     }
 
-    @ManyToOne
-    private Type type;
-
-    @ManyToMany(cascade = {CascadeType.PERSIST})
-    private List<Tag> tags = new ArrayList<>();
-
     public User getUser() {
         return user;
     }
@@ -57,12 +72,6 @@ public class Blog {
     public void setUser(User user) {
         this.user = user;
     }
-
-    @ManyToOne
-    private User user;
-
-    @OneToMany(mappedBy = "blog")
-    private List<Comment> comments = new ArrayList<>();
 
     public Blog() {
     }
@@ -86,6 +95,14 @@ public class Blog {
     }
 
 
+    public String getTagIds() {
+        return tagIds;
+    }
+
+    public void setTagIds(String tagIds) {
+        this.tagIds = tagIds;
+    }
+
     @Override
     public String toString() {
         return "Blog{" +
@@ -100,11 +117,15 @@ public class Blog {
                 ", commentabled=" + commentabled +
                 ", published=" + published +
                 ", recommend=" + recommend +
-                ", createDate=" + createTime +
-                ", updateDate=" + updateTime +
+                ", createTime=" + createTime +
+                ", user=" + user +
+                ", comments=" + comments +
+                ", updateTime=" + updateTime +
+                ", tags=" + tags +
+                ", type=" + type +
+                ", tagIds='" + tagIds + '\'' +
                 '}';
     }
-
 
     public List<Comment> getComments() {
         return comments;

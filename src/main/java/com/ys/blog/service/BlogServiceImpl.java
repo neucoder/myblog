@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -53,8 +54,10 @@ public class BlogServiceImpl implements BlogService{
                 if (blog.getTypeId()!= null) {
                     predicates.add(cb.equal(root.<Type>get("type").get("id"), blog.getTypeId()));
                 }
+
+
                 if (blog.isRecommend()) {
-                    predicates.add(cb.equal(root.<Boolean>get("isRecommend"), blog.isRecommend()));
+                    predicates.add(cb.equal(root.<Boolean>get("recommend"), blog.isRecommend()));
                 }
                 cq.where(predicates.toArray(new Predicate[predicates.size()]));
                 return null;
@@ -92,11 +95,27 @@ public class BlogServiceImpl implements BlogService{
         return null;
     }
 
+
+
+    @Transactional
     @Override
     public Blog saveBlog(Blog blog) {
+
+        blog.setCreateTime(new Date());
+        blog.setUpdateTime(new Date());
+        blog.setViews(0);
+
+//        if (blog.getId() == null) { // add new blog
+//            blog.setCreateTime(new Date());
+//            blog.setUpdateTime(new Date());
+//            blog.setViews(0);
+//        } else {                   // update blog
+//            blog.setUpdateTime(new Date());
+//        }
         return blogRepository.save(blog);
     }
 
+    @Transactional
     @Override
     public Blog updateBlog(Long id, Blog blog) {
         Blog b = blogRepository.getOne(id);
@@ -109,6 +128,7 @@ public class BlogServiceImpl implements BlogService{
         return blogRepository.save(b);
     }
 
+    @Transactional
     @Override
     public void deleteBlog(Long id) {
         blogRepository.deleteById(id);
