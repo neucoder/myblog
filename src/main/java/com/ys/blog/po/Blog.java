@@ -23,10 +23,26 @@ public class Blog {
     private boolean published;
     private boolean recommend;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
+    private Date createTime;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date updateDate;
+    private Date updateTime;
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 
     @ManyToOne
     private Type type;
@@ -84,8 +100,8 @@ public class Blog {
                 ", commentabled=" + commentabled +
                 ", published=" + published +
                 ", recommend=" + recommend +
-                ", createDate=" + createDate +
-                ", updateDate=" + updateDate +
+                ", createDate=" + createTime +
+                ", updateDate=" + updateTime +
                 '}';
     }
 
@@ -186,19 +202,5 @@ public class Blog {
         this.recommend = recommend;
     }
 
-    public Date getCreateDate() {
-        return createDate;
-    }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
 }

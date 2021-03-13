@@ -1,6 +1,7 @@
 package com.ys.blog.service;
 
 import com.ys.blog.po.Blog;
+import com.ys.blog.vo.BlogQuery;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -11,7 +12,7 @@ public interface BlogService {
     Blog getBlog(Long id);
 
     Blog getAndConvert(Long id);
-    Page<Blog> listBlog(Pageable pageable, Blog blog);
+    Page<Blog> listBlog(Pageable pageable, BlogQuery blog);
 
     // Page<Blog> listBlog(Pageable pageable, BlogQuery blog);
 

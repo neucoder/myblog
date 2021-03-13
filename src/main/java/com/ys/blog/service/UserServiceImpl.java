@@ -16,8 +16,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User checkUser(String username, String password) {
+        String psword = DigestUtils.md5DigestAsHex(password.getBytes());
         User user = userRepository.findByUsernameAndPassword(username,
-                DigestUtils.md5DigestAsHex(password.getBytes()));
+                psword);
         return user;
     }
 }
