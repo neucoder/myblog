@@ -101,17 +101,13 @@ public class BlogServiceImpl implements BlogService{
     @Override
     public Blog saveBlog(Blog blog) {
 
-        blog.setCreateTime(new Date());
-        blog.setUpdateTime(new Date());
-        blog.setViews(0);
-
-//        if (blog.getId() == null) { // add new blog
-//            blog.setCreateTime(new Date());
-//            blog.setUpdateTime(new Date());
-//            blog.setViews(0);
-//        } else {                   // update blog
-//            blog.setUpdateTime(new Date());
-//        }
+        if (blog.getId() == null) { // add new blog
+            blog.setCreateTime(new Date());
+            blog.setUpdateTime(new Date());
+            blog.setViews(0);
+        } else {                   // update blog
+            blog.setUpdateTime(new Date());
+        }
         return blogRepository.save(blog);
     }
 
