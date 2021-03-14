@@ -2,6 +2,7 @@ package com.ys.blog.dao;
 
 import com.ys.blog.po.Blog;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -15,5 +16,9 @@ public interface BlogRepository extends JpaRepository<Blog, Long>, JpaSpecificat
     // enquiry types by passing in number of size
     @Query("select b from Blog b where b.recommend = true")
     List<Blog> findTop(Pageable pageable);
+
+    // enquiry for search
+    @Query("select b from Blog b where b.title like ?1 or b.description like ?1")
+    Page<Blog> findByQuery(String query, Pageable pageable);
 }
 
