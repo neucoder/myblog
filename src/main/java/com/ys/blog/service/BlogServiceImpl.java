@@ -4,6 +4,7 @@ import com.ys.blog.NotFoundException;
 import com.ys.blog.dao.BlogRepository;
 import com.ys.blog.po.Blog;
 import com.ys.blog.po.Type;
+import com.ys.blog.util.MarkdownUtils;
 import com.ys.blog.util.MyBeanUtils;
 import com.ys.blog.vo.BlogQuery;
 import org.springframework.beans.BeanUtils;
@@ -41,7 +42,17 @@ public class BlogServiceImpl implements BlogService{
 
     @Override
     public Blog getAndConvert(Long id) {
-        return null;
+         Blog blog = blogRepository.getOne(id);
+//        Blog blog = blogRepository.getBlogById(id);
+        if (blog == null) {
+            throw new NotFoundException("The blog disappears");
+        }
+        Blog b = new Blog();
+        BeanUtils.copyProperties(blog, b);
+        String content = b.getContent();
+        b.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
+//        blogRepository.updateViews(id);
+        return b;
     }
 
     @Override

@@ -52,4 +52,17 @@ public class IndexController {
         model.addAttribute("query", query);
         return "search";
     }
+
+    // blog page
+    // @Transactional
+    @GetMapping("/blog/{id}")
+    public String blog(@PathVariable Long id, Model model) {
+
+//        model.addAttribute("blog",blogService.getBlog(id));
+
+        model.addAttribute("blog", blogService.getAndConvert(id));
+        return "blog";
+    }
+
+
 }
