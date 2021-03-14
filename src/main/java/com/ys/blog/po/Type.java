@@ -1,14 +1,12 @@
 package com.ys.blog.po;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "t_type")
+@Entity
+@Table(name = "t_type")
 public class Type {
     @Id
     @GeneratedValue

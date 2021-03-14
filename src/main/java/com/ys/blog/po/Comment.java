@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Entity(name="t_comment")
+@Entity
+@Table(name="t_comment")
 public class Comment {
 
     @Id
