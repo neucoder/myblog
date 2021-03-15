@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../static/Semantic/semantic.css" th:href="@{http://localhost:8080/static/Semantic/semantic.css}">
+    <link rel="stylesheet" type="text/css" href="../../static/Semantic/semantic.css" th:href="@{~/static/Semantic/semantic.css}">
 
-    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{http://localhost:8080/static/lib/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{~/static/lib/editormd/css/editormd.min.css}">
 
-    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{http://localhost:8080/static/css/me.css}">
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{~/static/css/me.css}">
     <title>博客发布</title>
 </head>
 <body>
@@ -218,9 +218,9 @@
 </footer>
 
 
-<script src="../../static/js/jquery-3.1.1.min.js" th:src="@{http://localhost:8080/static/js/jquery-3.1.1.min.js}"></script>
-<script src="../../static/Semantic/semantic.min.js" th:src="@{http://localhost:8080/static/Semantic/semantic.min.js}"></script>
-<script src="../../static/lib/editormd/editormd.js" th:src="@{http://localhost:8080/static/lib/editormd/editormd.js}"></script>
+<script src="../../static/js/jquery-3.1.1.min.js" th:src="@{~/static/js/jquery-3.1.1.min.js}"></script>
+<script src="../../static/Semantic/semantic.min.js" th:src="@{~/static/Semantic/semantic.min.js}"></script>
+<script src="../../static/lib/editormd/editormd.js" th:src="@{~/static/lib/editormd/editormd.js}"></script>
 
 <script>
 
@@ -233,7 +233,7 @@
             height  : 640,
             syncScrolling : "single",
             emoji:true,
-            path    : "http://localhost:8080/static/lib/editormd/lib/"
+            path    : "/static/lib/editormd/lib/"
         });
     });
 
