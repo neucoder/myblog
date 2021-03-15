@@ -472,31 +472,34 @@ h5,h6{font-size:1em;}
                 <div class="ui basic teal left pointing label" th:each="tag : ${blog.tags}" th:text="${tag.name}">方法论</div>
             </div>
 
-            <!--            赞赏-->
-            <div class="ui center aligned basic segment">
-                <button id="payButton" class="ui orange basic circular button">赞赏</button>
-            </div>
-            <!--            二维码-->
+            <div th:if="${blog.appreciation}">
+                <!--            赞赏-->
+                <div class="ui center aligned basic segment">
+                    <button id="payButton" class="ui orange basic circular button">赞赏</button>
+                </div>
+                <!--            二维码-->
+                <div class="ui payQR flowing popup transition hidden">
+                    <div class="ui orange basic label">
+                        <div class="ui images" style="font-size: inherit !important;">
+                            <div class="image">
+                                <img src="../static/images/wechat.png" th:src="@{/static/images/wechat.png}" class="ui rounded bordered image"
+                                     style="width: 120px !important;">
+                                <div>支付宝</div>
+                            </div>
+                            <div class="image">
+                                <img src="../static/images/wechat.png" th:src="@{/static/images/wechat.png}" class="ui rounded bordered image"
+                                     style="width: 120px !important;">
+                                <div>微信</div>
+                            </div>
+                        </div>
 
-            <div class="ui payQR flowing popup transition hidden">
-                <div class="ui orange basic label">
-                    <div class="ui images" style="font-size: inherit !important;">
-                        <div class="image">
-                            <img src="../static/images/wechat.png" th:src="@{/static/images/wechat.png}" class="ui rounded bordered image"
-                                 style="width: 120px !important;">
-                            <div>支付宝</div>
-                        </div>
-                        <div class="image">
-                            <img src="../static/images/wechat.png" th:src="@{/static/images/wechat.png}" class="ui rounded bordered image"
-                                 style="width: 120px !important;">
-                            <div>微信</div>
-                        </div>
                     </div>
-
                 </div>
             </div>
+
+
         </div>
-        <div class="ui attached positive message">
+        <div class="ui attached positive message" th:if="${blog.shareStatement}">
             <!--            博客信息-->
             <div class="ui middle aligned grid">
                 <div class="eleven wide column">
@@ -514,7 +517,7 @@ h5,h6{font-size:1em;}
             </div>
 
         </div>
-        <div class="ui bottom attached segment">
+        <div class="ui bottom attached segment" th:if="${blog.commentabled}">
             <!--            留言区域；列表-->
             <div id="comment-container" class="ui teal segment">
                 <div th:fragment="commentList">
@@ -668,10 +671,12 @@ h5,h6{font-size:1em;}
             </div>
             <div class="three wide column">
                 <h4 class="ui inverted header m-text-thin m-text-spaced ">最新博客</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item">刻意练习</a>
+                <div id="newblog-container" class="ui inverted link list" >
+                    <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" class="item" target="_blank" th:each="blog : ${newblogs}" th:text="${blog.title}">刻意练习</a>
+                    <!--/*-->
                     <a href="#" class="item">用户故事</a>
                     <a href="#" class="item">失败要趁早</a>
+                    <--*/-->
                 </div>
             </div>
             <div class="three wide column">

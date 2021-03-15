@@ -194,10 +194,12 @@
             </div>
             <div class="three wide column">
                 <h4 class="ui inverted header m-text-thin m-text-spaced ">最新博客</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item">刻意练习</a>
+                <div id="newblog-container" class="ui inverted link list" >
+                    <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" class="item" target="_blank" th:each="blog : ${newblogs}" th:text="${blog.title}">刻意练习</a>
+                    <!--/*-->
                     <a href="#" class="item">用户故事</a>
                     <a href="#" class="item">失败要趁早</a>
+                    <--*/-->
                 </div>
             </div>
             <div class="three wide column">

@@ -34,6 +34,7 @@ public class TagShowController {
         model.addAttribute("tags", tags);
         model.addAttribute("page", blogService.listBlog(id, pageable));
         model.addAttribute("activetagId", id);
+        model.addAttribute("newblogs", blogService.listRecommendBlogTop(3));
         return "tags";
 
     }

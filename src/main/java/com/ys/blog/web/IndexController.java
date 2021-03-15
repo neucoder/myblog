@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.jws.WebParam;
+
 @Controller
 public class IndexController {
 
@@ -36,11 +38,13 @@ public class IndexController {
         model.addAttribute("types", typeService.listTypeTop(6));
         model.addAttribute("tags", tagService.listTagTop(10));
         model.addAttribute("recommendBlogs", blogService.listRecommendBlogTop(8));
+        model.addAttribute("newblogs", blogService.listRecommendBlogTop(3));
         return "index";
     }
 
     @GetMapping("/blog")
-    public String blog(){
+    public String blog(Model model){
+        model.addAttribute("newblogs", blogService.listRecommendBlogTop(3));
         return "blog";
     }
 
@@ -50,6 +54,7 @@ public class IndexController {
                          @RequestParam String query, Model model) {
         model.addAttribute("page", blogService.listBlog("%" + query + "%", pageable));
         model.addAttribute("query", query);
+        model.addAttribute("newblogs", blogService.listRecommendBlogTop(3));
         return "search";
     }
 
@@ -61,8 +66,17 @@ public class IndexController {
 //        model.addAttribute("blog",blogService.getBlog(id));
 
         model.addAttribute("blog", blogService.getAndConvert(id));
+        model.addAttribute("newblogs", blogService.listRecommendBlogTop(3));
         return "blog";
     }
+
+//    @GetMapping("/footer/newblog")
+//    public String newblogs(Model model){
+//
+//        model.addAttribute("newblogs", blogService.listRecommendBlogTop(3));
+//
+//        return "_fragments :: newblogList";
+//    }
 
 
 }
