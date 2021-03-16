@@ -42,7 +42,7 @@
 
 
 <!--中间内容-->
-<div class="m-padded-tb-big m-container-small m-opacity-mini">
+<div class="m-padded-tb-big m-container-small">
     <div class="ui container">
         <div class="ui top attached segment">
             <!--            头部-->
@@ -60,9 +60,9 @@
 
             </div>
         </div>
-        <div class="ui attached segment">
+        <div class="ui attached centered segment">
             <!--            图片区域-->
-            <img src="https://picsum.photos/800/450?image=1005" th:href="@{${blog.firstPicture}}" alt="" class="ui rounded image">
+            <img src="https://picsum.photos/800/450?image=1005" th:src="@{${blog.firstPicture}}" alt="" class="ui middle centered rounded image">
 
         </div>
         <div class="ui attached padded segment">
@@ -482,12 +482,12 @@ h5,h6{font-size:1em;}
                     <div class="ui orange basic label">
                         <div class="ui images" style="font-size: inherit !important;">
                             <div class="image">
-                                <img src="../static/images/wechat.png" th:src="@{/static/images/wechat.png}" class="ui rounded bordered image"
+                                <img src="../static/images/alipay.png" th:src="@{/static/images/alipay.jpg}" class="ui rounded bordered image"
                                      style="width: 120px !important;">
                                 <div>支付宝</div>
                             </div>
                             <div class="image">
-                                <img src="../static/images/wechat.png" th:src="@{/static/images/wechat.png}" class="ui rounded bordered image"
+                                <img src="../static/images/weipay.png" th:src="@{/static/images/weipay.png}" class="ui rounded bordered image"
                                      style="width: 120px !important;">
                                 <div>微信</div>
                             </div>
